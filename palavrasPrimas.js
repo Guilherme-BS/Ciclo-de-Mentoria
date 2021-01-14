@@ -26,25 +26,45 @@ function somaLetras (soma){
 }
 
 function comparaPrimoOuN(valor){   // compara se o numero e primo ou nao 
-    let divisores = 0
-    for (let i = 1; i <= valor; i ++){
-        if (valor % i == 0){
-            divisores += 1
-        }
+    
+    if ( valor > 2 && valor % 2 == 0 ){
+
+        console.log(`nao e primo !`)
+    
     }
-    if (divisores == 2){
-        
-        return `E primo!`
+    
+    else if(valor == 1){
+        console.log(`E primo `)
+
     }
+
     else{
 
-        return `Nao e primo!`
+        let divisores = 0
+        for (let i = 1; i <= valor; i ++){
+            
+            if (valor % i == 0){
+                divisores += 1
+                
+            }
+        }
+        if (divisores == 2){
+            
+            console.log(`E primo!`) 
+            
+        }
+        else{
+            console.log(`Não e primo`)
+        }
+        
+        
+
     }
+
+    
     
 }
 
-let test = somaLetras(`abc`)
-let teste = (somaLetras(`UFRN`))
-console.log(comparaPrimoOuN(test))
-console.log(comparaPrimoOuN(teste))
+let test = somaLetras(`A`)
+comparaPrimoOuN(test)
 

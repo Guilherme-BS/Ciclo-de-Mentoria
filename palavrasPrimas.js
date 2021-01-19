@@ -4,54 +4,56 @@
    passo 4 =  passar parametros das functions anteriores pra comparacao ; OK
    */ 
 
-function conversaoDeLetras (letraPraConversao){   // conferindo se a letra e maiscula ou minuscula e trandormando as em numeros
-    if( letraPraConversao.charCodeAt(0) < 91){
 
-        return letraPraConversao.charCodeAt(0) - 38
-    }
-    else if(letraPraConversao.charCodeAt(0) > 96){
-
-        return letraPraConversao.charCodeAt(0) - 96
-    }
-
-}
-
-function somaLetras (letraConvertida){      // fazendo a soma da conversao de cada letra
+function somaPalavras (palavra){      // fazendo a soma da conversao de cada letra
     let totalDaSoma = 0
-    for(let i = 0; i < letraConvertida.length; i++){
-        totalDaSoma += conversaoDeLetras(letraConvertida[i])
+    for(let i = 0; i < palavra.length; i++){
+        totalDaSoma += conversaoDeLetras(palavra[i])
     }
     return totalDaSoma
 }
 
-function comparaPrimo(resultadoDaSoma){   // compara se o numero e primo ou nao 
-    if ( resultadoDaSoma > 2 && resultadoDaSoma % 2 == 0 ){
+function conversaoDeLetras (letra){   // conferindo se a letra e maiscula ou minuscula e trandormando as em numeros
+    if( letra.charCodeAt(0) < 91){
+
+        return letra.charCodeAt(0) - 38
+    }
+    else if(letra.charCodeAt(0) > 96){
+
+        return letra.charCodeAt(0) - 96
+    }
+
+}
+
+
+function ePrimo(palavraCovertida){   // compara se o numero e primo ou nao 
+    if ( palavraCovertida > 2 && palavraCovertida % 2 === 0 ){
         return false;
     }
-    else if (resultadoDaSoma == 1){
-        return true;
+    else if (palavraCovertida === 3){
+        return false;
     }
-    else{
-        
-        let divisores = 0
-        for (let i = 1; i <= resultadoDaSoma / 2; i ++){
-            if (resultadoDaSoma % i == 0){
-                divisores += 1
+    else{        
+        for (let i = 3; i <= palavraCovertida / 2; i ++){
+            if (palavraCovertida % i == 0){
+                console.log()
+                return false;
+            }else {
+                return true;
             }
-        }
-        if (divisores == 1){
-            return true;     
-        }
-        else{
-            return false;
-        }
+        }   
     }  
 }
-let test = somaLetras(`Ab`)
-
-if (comparaPrimo(test) == false){
-    console.log(`Nao e primo !`)
-} else{
-    console.log(`E primo !`)
+let testCase = [`a` , `URFN` , `NpN`]
+ 
+function exibicao (entrada){
+    for(let i = 0; i < entrada.length; i++){
+        let guardaSomaPalavras = somaPalavras(entrada[i])
+        if (ePrimo(guardaSomaPalavras) == false){
+            console.log(`Nao e primo !`)
+        } else{
+            console.log(`E primo !`)
+        }
+    }
 }
-
+exibicao(testCase)
